@@ -1,6 +1,6 @@
-# hello
+# kakao clone
 
-A new Flutter project.
+clone the Kakao talk by Flutter
 
 ## Getting Started
 
