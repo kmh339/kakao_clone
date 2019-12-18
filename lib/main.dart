@@ -1,13 +1,29 @@
 import 'dart:ui';
 import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'friends.dart';
 import 'chat.dart';
 import 'settings.dart';
+
+// Future<void> main() async {
+//   final FirebaseApp app = await FirebaseApp.configure(
+//     name: 'test',
+//     options: const FirebaseOptions(
+//       googleAppID: '1:881954261126:android:a8f3bba3f252f9a241a907',
+//       gcmSenderID: '881954261126',
+//       apiKey:
+//           'AAAAzViSCIY:APA91bHh1Z1-ikZ_-pNSPnogwpt4PcQWOwAGWd5yQzb-1KloDlRVYgkaZFWlcYTd30osx5b4hP0l8hTwBoTa7j1-CxNAXSxNUOJjkaP9nRoqAIfs9ooox-xUkA2KFB9OwPJxROgMhq1y',
+//       projectID: 'kakao-28a1a',
+//     ),
+//   );
+//   final Firestore firestore = Firestore(app: app);
+
+//   runApp(MaterialApp(title: 'Firestore Example', home: MyTabs()));
+// }
 
 void main() => runApp(MaterialApp(home: MyTabs()));
 
