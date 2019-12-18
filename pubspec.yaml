@@ -17,6 +17,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   firebase_core: ^0.4.2 # add dependency for Firebase Core
+  firebase_database: ^3.1.1
   #cloud_firestore: ^0.13.0
 
 # For information on the generic Dart part of this file, see the
