@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class Friends extends StatelessWidget {
   Friends({this.ftitle, this.friendsRef});
@@ -29,7 +30,18 @@ class Friends extends StatelessWidget {
         ],
         backgroundColor: Colors.white,
       ),
-      body: Text('친구창', style: TextStyle(fontSize: 50, color: Colors.black)),
+      body: ListView(
+        padding: const EdgeInsets.all(9),
+        children: <Widget>[
+          Container(
+            height: 50,
+            color: Colors.black26,
+            child: const Center(
+              child: Text('hi'),
+            ),
+          )
+        ],
+      ),
       backgroundColor: Colors.white30,
     );
   }
