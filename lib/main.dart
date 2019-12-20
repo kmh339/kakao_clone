@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -36,13 +35,10 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
         .reference()
         .child('recent')
         .child('id')
-        .set({'title': 'bye'});
+        .set({'title': 'rr'});
   }
 
-  var friendsRef = FirebaseDatabase.instance
-      .reference()
-      .child('contents')
-      .child('browseFriends');
+  var dbRef = FirebaseDatabase.instance.reference();
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +49,7 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
           children: [
             Friends(
               ftitle: '친구',
-              friendsRef: friendsRef,
+              dbRef: dbRef,
             ),
             Chat(),
             Settings()
