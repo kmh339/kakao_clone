@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 class Friends extends StatelessWidget {
-  Friends({this.title});
-  final Widget title;
+  Friends({this.ftitle, this.friendsRef});
+  final String ftitle;
+  final friendsRef;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          '친구',
+          ftitle,
           style: TextStyle(fontSize: 20, color: Colors.black),
         ),
         actions: <Widget>[

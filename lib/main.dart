@@ -39,13 +39,25 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
         .set({'title': 'bye'});
   }
 
+  var friendsRef = FirebaseDatabase.instance
+      .reference()
+      .child('contents')
+      .child('browseFriends');
+
   @override
   Widget build(BuildContext context) {
     //createDBTest();
 
     return Scaffold(
       body: TabBarView(controller: controller, // 컨트롤러 연결
-          children: [Friends(), Chat(), Settings()]),
+          children: [
+            Friends(
+              ftitle: '친구',
+              friendsRef: friendsRef,
+            ),
+            Chat(),
+            Settings()
+          ]),
       bottomNavigationBar: Container(
         child: TabBar(controller: controller, // 컨트롤러 연결
             tabs: [
