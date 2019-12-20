@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class Friends extends StatelessWidget {
   Friends({this.title});
   final Widget title;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
