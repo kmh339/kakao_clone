@@ -35,26 +35,52 @@ class Friends extends StatelessWidget {
         child: FutureBuilder(
           future: MakeCall().firebaseCalls(dbRef),
           builder: (context, snapshot) {
-            if (!snapshot.hasError) {
-              return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (context, int index) {
-                  return Card(
-                    elevation: 0.0,
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          child: Image.network(snapshot.data[index].iconUrl,
-                              height: MediaQuery.of(context).size.width * 0.3,
-                              width: MediaQuery.of(context).size.width * 0.3),
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+                return Text('wait');
+              case ConnectionState.waiting:
+                return Text('Loading');
+              default:
+                if (!snapshot.hasError) {
+                  return ListView.builder(
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, int index) {
+                      return Card(
+                        elevation: 0.0,
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Image.network(snapshot.data[index].iconUrl,
+                                      height: 100, width: 100),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 20),
+                                  ),
+                                  Text(
+                                    snapshot.data[index].friendName,
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 120),
+                                  ),
+                                  Text(
+                                    snapshot.data[index].friendState,
+                                    style: TextStyle(fontSize: 10),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      );
+                    },
                   );
-                },
-              );
-            } else {
-              return Text('Error');
+                } else {
+                  return Text('Error : ${snapshot.error}');
+                }
             }
           },
         ),
@@ -106,7 +132,7 @@ class MakeCall {
       DatabaseReference databaseReference) async {
     FriendList friendList;
     DataSnapshot dataSnapshot = await databaseReference.once();
-    Map<dynamic, dynamic> jsonResponse = dataSnapshot.value[0]['contents'];
+    Map<dynamic, dynamic> jsonResponse = dataSnapshot.value['contents'];
     friendList = new FriendList.fromJson(jsonResponse);
     listItems.addAll(friendList.friendList);
 
