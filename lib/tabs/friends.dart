@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'dart:async';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Friends extends StatelessWidget {
   Friends({this.ftitle, this.dbRef});
@@ -45,35 +46,47 @@ class Friends extends StatelessWidget {
                   return ListView.builder(
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, int index) {
-                      return Card(
-                        elevation: 0.0,
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  Image.network(snapshot.data[index].iconUrl,
-                                      height: 100, width: 100),
-                                  Padding(
-                                    padding: EdgeInsets.only(right: 20),
-                                  ),
-                                  Text(
-                                    snapshot.data[index].friendName,
-                                    style: TextStyle(fontSize: 14),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(right: 120),
-                                  ),
-                                  Text(
-                                    snapshot.data[index].friendState,
-                                    style: TextStyle(fontSize: 10),
-                                  ),
-                                ],
+                      return GestureDetector(
+                        onTap: () {
+                          Fluttertoast.showToast(
+                              msg: 'Tap the ${snapshot.data[index].friendName}',
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIos: 1,
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              fontSize: 16.0);
+                        },
+                        child: Card(
+                          elevation: 0.0,
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    Image.network(snapshot.data[index].iconUrl,
+                                        height: 100, width: 100),
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 20),
+                                    ),
+                                    Text(
+                                      snapshot.data[index].friendName,
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 120),
+                                    ),
+                                    Text(
+                                      snapshot.data[index].friendState,
+                                      style: TextStyle(fontSize: 10),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       );
                     },
