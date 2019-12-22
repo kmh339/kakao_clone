@@ -40,7 +40,16 @@ class Friends extends StatelessWidget {
               case ConnectionState.none:
                 return Text('wait');
               case ConnectionState.waiting:
-                return Text('Loading');
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Loading..',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                );
               default:
                 if (!snapshot.hasError) {
                   return ListView.builder(
@@ -57,9 +66,10 @@ class Friends extends StatelessWidget {
                               textColor: Colors.white,
                               fontSize: 16.0);
                         },
-                        splashColor: Colors.red[400],
+                        splashColor: Colors.red[500],
                         child: Card(
                           elevation: 0.0,
+                          color: Colors.white,
                           child: Row(
                             children: <Widget>[
                               Container(
@@ -98,9 +108,9 @@ class Friends extends StatelessWidget {
             }
           },
         ),
-        color: Colors.black12,
+        color: Colors.white54,
       ),
-      backgroundColor: Colors.white30,
+      backgroundColor: Colors.black12,
     );
   }
 }
