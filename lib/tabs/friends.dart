@@ -46,7 +46,7 @@ class Friends extends StatelessWidget {
                   return ListView.builder(
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, int index) {
-                      return GestureDetector(
+                      return InkWell(
                         onTap: () {
                           Fluttertoast.showToast(
                               msg: 'Tap the ${snapshot.data[index].friendName}',
@@ -57,6 +57,7 @@ class Friends extends StatelessWidget {
                               textColor: Colors.white,
                               fontSize: 16.0);
                         },
+                        splashColor: Colors.red[400],
                         child: Card(
                           elevation: 0.0,
                           child: Row(
