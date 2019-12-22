@@ -68,7 +68,7 @@ class Friends extends StatelessWidget {
                                       MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
                                     Image.network(snapshot.data[index].iconUrl,
-                                        height: 100, width: 100),
+                                        height: 80, width: 80),
                                     Padding(
                                       padding: EdgeInsets.only(right: 20),
                                     ),
